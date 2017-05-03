@@ -1,6 +1,6 @@
 
 public class Pion extends Piece{
-	public Pion(String c){
+	public Pion(boolean c){
 		super("Pion",c);
 	}
 	

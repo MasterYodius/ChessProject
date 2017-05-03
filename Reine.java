@@ -1,7 +1,7 @@
 
 public class Reine extends Piece{
-	public Reine(String c){
-		super("Reine",c);
+	public Reine(boolean c){
+		super("   Reine",c);
 	}
 	
 	public String toString(){

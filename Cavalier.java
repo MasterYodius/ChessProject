@@ -1,6 +1,6 @@
 
 public class Cavalier extends Piece{
-	public Cavalier(String c){
+	public Cavalier(boolean c){
 		super("Cavalier",c);
 	}
 	

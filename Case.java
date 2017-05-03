@@ -3,13 +3,20 @@ public class Case {
 	private Piece p;
 	private int x;
 	private int y;
+	private boolean estVide;
 	
-	public Case(){}
+	public Case(int l,int c,boolean v){
+		this.p=null;
+		this.x=l;
+		this.y=c;
+		this.estVide = v;
+	}
 	
-	public Case(Piece piece, int ligne, int colonne){
+	public Case(int ligne, int colonne,Piece piece, boolean v){
 		this.p = piece;
 		this.x = ligne;
 		this.y = colonne;
+		this.estVide = v;
 	}
 	
 	public Piece getPiece(){
@@ -25,14 +32,24 @@ public class Case {
 	public void setPiece(Piece piece){
 		this.p = piece;
 	}
+	public void setPiece(){
+		this.p=null;
+	}
 	public void setLigne(int ligne){
 		this.x = ligne;
 	}
 	public void setColonne(int colonne){
 		this.y = colonne;
 	}
-	public String toString(){
-		return /*this.getLigne()+" "+this.getColonne()+" "+ */" "+this.getPiece();
-	}
-}
 
+	public boolean isEstVide() {
+		return this.estVide;
+	}
+
+	public void setestVide(boolean estVide) {
+		this.estVide = estVide;
+	}
+
+
+}
+	

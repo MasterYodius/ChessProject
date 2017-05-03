@@ -7,6 +7,7 @@ public abstract class Piece {
 	public Piece(){
 		this.nom="vegeto";
 		this.estBlanc=false;
+		
 	}	
 	public Piece(String n,boolean c){
 		this.nom=n;
@@ -33,5 +34,6 @@ public abstract class Piece {
 	public String toString(){
 		return this.getNom() +" "+this.getestBlanc() ;
 	}
+	//public abstract void deplacement();
 }
 

@@ -1,7 +1,7 @@
 
 public class Tour extends Piece{
-	public Tour(String c){
-		super("Tour",c);
+	public Tour(boolean c){
+		super("    Tour",c);
 	}
 	
 	public String toString(){
