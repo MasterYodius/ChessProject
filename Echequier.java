@@ -14,7 +14,11 @@ public class Echequier {
 	}*/
 	public Echequier(){
 		this.plateau = new Case[8][8];
-		
+		/*
+		for(int l=0; l<8; l++)
+			for(int c=0; c<8; c++)
+				this.plateau[l][c] = new Case(l, c, false);
+		*/
 		this.plateau[0][0]=new Case(0,0,new Tour(false),false);
 		this.plateau[0][7]=new Case(0,7,new Tour(false),false);
 		this.plateau[0][1]=new Case(0,1,new Cavalier(false),false);
@@ -45,18 +49,14 @@ public class Echequier {
 		{
 			this.plateau[6][y]=new Case(6,y,new Pion(true),false);
 		}
-		
+
+		/*
 		for(int i=2;i<5;i++){
 			for(int j=0;j<8;j++){
 				this.plateau[i][j]=new Case(i,j,true);
 			}
 		}
-		
-		
-		
-		
-		
-		
+		*/		
 	}
 	
 	public Case getCase(int i, int j){
@@ -70,24 +70,28 @@ public class Echequier {
 	}
 	
 	public String toString(){
-		String s="";
-		String ligne = "--------------------------------------------------------------------------------------------------------\n";
+		String s= new String();
+		String ligne = "-----------------------------------------\n";
 		String affichage=ligne;
+			
+		
 		for(int i=0;i<8;i++){
 			for(int j=0;j<8;j++){
-			/*	if(this.plateau[i][j].getPiece()==null){
-					s=s+"            |";
+				if(j==0)
+					s = s + "| ";
+				if(this.plateau[i][j]!=null)
+					s = s + this.plateau[i][j].getPiece() + " | ";
+				else
+					s = s + "   | ";
+				if(j==7){
+					s = s + "\n" + ligne + "\n";
 				}
-				else{*/
-					s=s+this.getCase(i,j).getPiece().getNom();
-					if(this.getCase(i,j).getPiece().getestBlanc())
-						s=s+"B   |";
-					else
-						s=s+"N   |";
-				//}
+				
 			}
-			s=s+"\n"+ligne;
+
 		}
+
+		
 		affichage=affichage+s;
 		return affichage;
 				

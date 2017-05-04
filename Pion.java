@@ -1,7 +1,7 @@
 
 public class Pion extends Piece{
 	public Pion(boolean c){
-		super("Pion",c);
+		super("P",c);
 	}
 	
 	public String toString(){

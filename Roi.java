@@ -1,7 +1,7 @@
 
 public class Roi extends Piece{
 	public Roi(boolean c){
-		super("     Roi",c);
+		super("R",c);
 	}
 	
 	public String toString(){

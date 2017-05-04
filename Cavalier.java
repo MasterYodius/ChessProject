@@ -1,7 +1,7 @@
 
 public class Cavalier extends Piece{
 	public Cavalier(boolean c){
-		super("Cavalier",c);
+		super("C",c);
 	}
 	
 	public String toString(){
