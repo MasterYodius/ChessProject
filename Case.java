@@ -19,6 +19,18 @@ public class Case {
 		this.estVide = v;
 	}
 	
+	public Case(Case c){
+		this.p=c.p;
+		this.x=c.x;
+		this.y=c.y;
+		this.estVide = c.estVide;
+	}
+	
+	public void libererCase(){
+		this.setPiece(null);
+		this.setestVide(true);
+	}
+	
 	public Piece getPiece(){
 		return this.p;
 	}
@@ -29,8 +41,8 @@ public class Case {
 		return this.y;
 	}
 	
-	public void setPiece(Piece piece){
-		this.p = piece;
+	public void setPiece(Piece p1){
+		this.p = p1;
 	}
 	public void setPiece(){
 		this.p=null;

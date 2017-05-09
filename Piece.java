@@ -32,10 +32,11 @@ public abstract class Piece {
 		this.estBlanc = c;
 	}
 	public String toString(){
-		if(this.getestBlanc())
-			return this.getNom() +"B";
-		return this.getNom() + "N";
+			if(this.getestBlanc())
+				return this.getNom() +"B";
+			return this.getNom() + "N";
+		
 	}
-	//public abstract void deplacement();
+	public abstract boolean deplacementValide(int x1,int y1,int x2,int y2);
 }
 
