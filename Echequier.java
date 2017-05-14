@@ -1,18 +1,9 @@
 
 public class Echequier {
-	
 	private Case[][] plateau;
 	
-	/*public Echequier(){
-		this.plateau = new Case[8][8];
-		for (int i = 0 ; i < 8 ; i++)
-		{
-			 for (int j = 0 ; j < 8 ; j++)
-			 {
-				 plateau[i][j] = new Case();
-			 }
-		}
-	}*/
+
+	
 	public Echequier(){
 		this.plateau = new Case[8][8];
 		/*
@@ -100,9 +91,9 @@ public class Echequier {
 	
 	
 	public void deplacement(int x1,int y1,int x2,int y2){
-		if((this.plateau[x1][y1].getPiece().deplacementValide(x1,y1, x2, y2) && this.plateau[x2][y2].isEstVide()/* && this.cheminPossible(x1, y1, x2, y2)*/) // si le deplacement est valide et la case d arriver est vide
+		if((this.plateau[x1][y1].getPiece().deplacementValide(x1,y1, x2, y2) && this.plateau[x2][y2].isEstVide() && this.cheminPossible(x1, y1, x2, y2)) // si le deplacement est valide et la case d arriver est vide
 			// si le deplacement est valide et que la case n est pas vide et que la case est mangeable
-				|| (this.plateau[x1][y1].getPiece().deplacementValide(x1,y1, x2, y2) && this.plateau[x2][y2].isEstVide()==false && estMangeableCouleur(x1, y1, x2, y2)==true && this.cheminPossible(x1, y1, x2, y2))){
+				|| (this.plateau[x2][y2].isEstVide()==false && this.estMangeableCouleur(x1, y1, x2, y2)==true && this.plateau[x1][y1].getPiece().deplacementValide(x1,y1, x2, y2) &&  this.cheminPossible(x1, y1, x2, y2))){
 						
 			this.plateau[x2][y2]=new Case(x2,y2,this.plateau[x1][y1].getPiece(),false);
 			this.plateau[x1][y1].libererCase();
@@ -114,14 +105,16 @@ public class Echequier {
 	
 	
 	public boolean estMangeableCouleur(int x1, int y1, int x2 ,int y2){
-		if(this.plateau[x1][y1].getPiece().getestBlanc()!=this.plateau[x2][y2].getPiece().getestBlanc())
+		if(this.plateau[x2][y2].isEstVide()) 
+			return false;
+		else if(this.getCase(x1, y1).getPiece().getestBlanc()!=this.getCase(x2, y2).getPiece().getestBlanc())
 			return true;
 		return false;
 	}
 	
 	public boolean cheminPossible(int x1,int y1, int x2 , int y2){
 		Piece pieceDepart = this.plateau[x1][y1].getPiece();
-		if(pieceDepart instanceof Cavalier) // si la piece est un cavalier
+		if((pieceDepart instanceof Cavalier) || (pieceDepart instanceof Roi)) // si la piece est un cavalier
 			return true;
 		
 		
@@ -133,9 +126,13 @@ public class Echequier {
 				return this.plateau[x2][y2].isEstVide() && this.plateau[x2-1][y2].isEstVide();
 			}
 			else if(y1==y2)
-				return this.plateau[x2][y2].isEstVide();
-			else
-				return true; 		
+				return true;
+			
+				if(this.estMangeableCouleur(x1, y1, x2, y2) && ((x2 == x1+1 && y2== y1+1) || (x2 == x1+1 && y2== y1-1) || (x2 == x1-1 && y2== y1+1) || (x2 == x1-1 && y2== y1-1))) 
+					return true;
+				else 
+					return false;
+		
 		}
 		else if( pieceDepart instanceof Tour){
 			if(Math.abs(x1-x2)==1 || Math.abs(y1-y2) == 1)
@@ -143,65 +140,214 @@ public class Echequier {
 		
 			if(x1==x2 && y1<y2){// la tour va a droite
 				int nb = y2-y1;
-				for(int i=1;i<nb+1;i++){
+				int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloquï¿½  
+					while(i<nb && !bloquer){ //tant que il est pas bloqué  
 						if(!(this.plateau[x1][y1+i].isEstVide())){
 							bloquer=true;
 						}
+						i++;
 					}
-					if(bloquer==false){
-						return true;
-					}
-					else	return false;
-				}
+					return !bloquer;
+				
 			}
 			else if(x1==x2 && y1>y2){  //gauche
 				int nb = y1-y2;
-				for(int i=1;i<nb+1;i++){
-					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloquï¿½  
-						if(!(this.plateau[x1][y1-i].isEstVide())){
-							bloquer=true;
-						}
+				int i=1;
+				boolean bloquer = false;
+				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					if(!(this.plateau[x1][y1-i].isEstVide())){
+						bloquer=true;
 					}
-					if(bloquer==false){
-						return true;
-					}
-					else	return false;
+					i++;
 				}
+				return !bloquer;
+				
 			}
 			else if(y1==y2 && x1<x2 ){      //bas
 				int nb = x2-x1;
-				for(int i=1;i<nb+1;i++){
-					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloquï¿½  
-						if(!(this.plateau[x1+i][y1].isEstVide())){
-							bloquer=false;
-						}
+				int i=1;
+				boolean bloquer = false;
+				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					if(!(this.plateau[x1+i][y1].isEstVide())){
+						bloquer=true;
 					}
-					if(bloquer==false){
-						return true;
-					}
-					else	return false;
+					i++;
 				}
+					return !bloquer;
 			}
-				else if(y1==y2 && x1>x2){                     //droite
-					int nb = x1-x2;
-					for(int i=1;i<nb+1;i++){
-						boolean bloquer = false;
-						while(i<nb && !bloquer){ //tant que il est pas bloquï¿½  
-							if(!(this.plateau[x1-i][y1].isEstVide())){
-								bloquer=true;
-							}
+			else if(y1==y2 && x1>x2){                     //haut
+				int nb = x1-x2;
+				int i=1;
+					boolean bloquer = false;
+					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+						if(!(this.plateau[x1-i][y1].isEstVide())){
+							bloquer=true;
 						}
-						if(bloquer==false){
-							return true;
-						}
-						else	return false;
+						i++;
 					}
+					return !bloquer;					
+			}
+		}
+		else if( pieceDepart instanceof Fou ){
+			if(Math.abs(x1-x2)==1 )
+				return true;
+		
+			if(x1>x2 && y1>y2){// le fou va en haut a gauche
+				int nb = x1-x2;
+				int i=1;
+					boolean bloquer = false;
+					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+						if(!(this.plateau[x1-i][y1-i].isEstVide())){
+							bloquer=true;
+						}
+						i++;
+					}
+					return !bloquer;				
+			}
+			else if(x1>x2 && y1<y2){// le fou va en haut a droite
+				int nb = x1-x2;
+				int i=1;
+					boolean bloquer = false;
+					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+						if(!(this.plateau[x1-i][y1+i].isEstVide())){
+							bloquer=true;
+						}
+						i++;
+					}
+					return !bloquer;
+			}
+			else if(x1<x2 && y1<y2){// le fou va en bas a droite
+				int nb = x2-x1;
+				int i=1;
+				boolean bloquer = false;
+				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					if(!(this.plateau[x1+i][y1+i].isEstVide())){
+						bloquer=true;
+					}
+					i++;
+				}
+				return !bloquer;
+			}
+			else if(x1<x2 && y1>y2){// le fou va en bas a gauche
+				int nb = x2-x1;
+				int i=1;
+				boolean bloquer = false;
+				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					if(!(this.plateau[x1+i][y1-i].isEstVide())){
+						bloquer=true;
+					}
+					i++;
+				}
+					
+					return !bloquer;
 			}
 			
+		}
+		else if( pieceDepart instanceof Reine ){
+			if(Math.abs(x1-x2)==1 || Math.abs(y1-y2) == 1)
+				return true;
+		
+			if(x1==x2 && y1<y2){// la tour va a droite
+				int nb = y2-y1;
+				int i=1;
+					boolean bloquer = false;
+					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+						if(!(this.plateau[x1][y1+i].isEstVide())){
+							bloquer=true;
+						}
+						i++;
+					}
+					return !bloquer;
+				
+			}
+			else if(x1==x2 && y1>y2){  //gauche
+				int nb = y1-y2;
+				int i=1;
+				boolean bloquer = false;
+				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					if(!(this.plateau[x1][y1-i].isEstVide())){
+						bloquer=true;
+					}
+					i++;
+				}
+				return !bloquer;
+				
+			}
+			else if(y1==y2 && x1<x2 ){      //bas
+				int nb = x2-x1;
+				int i=1;
+				boolean bloquer = false;
+				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					if(!(this.plateau[x1+i][y1].isEstVide())){
+						bloquer=true;
+					}
+					i++;
+				}
+					return !bloquer;
+			}
+			else if(y1==y2 && x1>x2){                     //haut
+				int nb = x1-x2;
+				int i=1;
+					boolean bloquer = false;
+					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+						if(!(this.plateau[x1-i][y1].isEstVide())){
+							bloquer=true;
+						}
+						i++;
+					}
+					return !bloquer;					
+			}
+		
+			else if(x1>x2 && y1>y2){// le fou va en haut a gauche
+				int nb = x1-x2;
+				int i=1;
+					boolean bloquer = false;
+					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+						if(!(this.plateau[x1-i][y1-i].isEstVide())){
+							bloquer=true;
+						}
+						i++;
+					}
+					return !bloquer;				
+			}
+			else if(x1>x2 && y1<y2){// le fou va en haut a droite
+				int nb = x1-x2;
+				int i=1;
+					boolean bloquer = false;
+					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+						if(!(this.plateau[x1-i][y1+i].isEstVide())){
+							bloquer=true;
+						}
+						i++;
+					}
+					return !bloquer;
+			}
+			else if(x1<x2 && y1<y2){// le fou va en bas a droite
+				int nb = x2-x1;
+				int i=1;
+				boolean bloquer = false;
+				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					if(!(this.plateau[x1+i][y1+i].isEstVide())){
+						bloquer=true;
+					}
+					i++;
+				}
+				return !bloquer;
+			}
+			else if(x1<x2 && y1>y2){// le fou va en bas a gauche
+				int nb = x2-x1;
+				int i=1;
+				boolean bloquer = false;
+				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					if(!(this.plateau[x1+i][y1-i].isEstVide())){
+						bloquer=true;
+					}
+					i++;
+				}
+					
+					return !bloquer;
+			}
 		}
 	
 		return false;
