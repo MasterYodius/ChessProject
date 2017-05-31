@@ -545,6 +545,12 @@ public class Echequier {
 	
 	
 
+
+
+	public boolean pat(Joueur JBlanc,Joueur JNoir){
+		return false;
+	}
+
+
+
 }
-
-
