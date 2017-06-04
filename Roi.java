@@ -1,14 +1,12 @@
 
 public class Roi extends Piece{
-	private int xDep;
-	private int yDep;
+
 	
-	public Roi(boolean c,int xD,int yD){
-		super("R",c);
-		this.xDep=xD;
-		this.yDep=yD;
+	public Roi(boolean c,boolean d){
+		super("R",c,d);
 	}
-	
+
+
 	public String toString(){
 		return super.toString();
 	}

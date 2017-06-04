@@ -3,8 +3,8 @@ public class Pion extends Piece{
 	private int xDep;
 	private int yDep;
 	
-	public Pion (boolean c,int xD,int yD){
-		super("P",c);
+	public Pion (boolean c,int xD,int yD,boolean d){
+		super("P",c,d);
 		this.xDep=xD;
 		this.yDep=yD;
 	}

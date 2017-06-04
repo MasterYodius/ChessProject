@@ -1,7 +1,7 @@
 
 public class Fou extends Piece{
-	public Fou(boolean c){
-		super("F",c);
+	public Fou(boolean c,boolean d){
+		super("F",c,d);
 	}
 	
 	public String toString(){
