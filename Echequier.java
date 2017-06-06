@@ -1,11 +1,17 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Echequier {
 	private Case[][] plateau;
 	
 
 	
-	public Echequier(){
+	public Echequier(boolean b){
 		this.plateau = new Case[8][8];
 		
 		for(int i=0;i<8;i++){
@@ -13,42 +19,42 @@ public class Echequier {
 				this.plateau[i][j]=new Case(i,j,true);
 			}
 		}
-		
+		if(b){
 	
-	this.plateau[0][0]=new Case(0,0,new Tour(false,false),false);
-		this.plateau[0][7]=new Case(0,7,new Tour(false,false),false);
-	/*	this.plateau[0][1]=new Case(0,1,new Cavalier(false,false),false);
-		this.plateau[0][6]=new Case(0,6,new Cavalier(false,false),false);
-		this.plateau[0][2]=new Case(0,2,new Fou(false,false),false);
-		//this.plateau[0][5]=new Case(0,5,new Fou(false,false),false);*/
-	//	this.plateau[0][3]=new Case(0,3,new Reine(false,false),false);
-		this.plateau[0][4]=new Case(0,4,new Roi(false,false),false);
-		
-		this.plateau[7][0]=new Case(7,0,new Tour(true,false),false);
-	this.plateau[7][7]=new Case(7,7,new Tour(true,false),false);
-	/*	this.plateau[7][1]=new Case(7,1,new Cavalier(true,false),false);
-		this.plateau[7][6]=new Case(7,6,new Cavalier(true,false),false);
-		this.plateau[7][2]=new Case(7,2,new Fou(true,false),false);
-		this.plateau[7][5]=new Case(7,5,new Fou(true,false),false);*/
-		this.plateau[7][3]=new Case(7,3,new Reine(true,false),false);
-		this.plateau[7][4]=new Case(7,4,new Roi(true,false),false);
-		
-		
-		
-		
-		/*for (int x = 0; x<8;x++)
-		{
-			this.plateau[1][x]=new Case(1,x,new Pion(false,1,x,false),false);
-		}
-		
-		for (int y = 0; y<8;y++)
-		{
-			this.plateau[6][y]=new Case(6,y,new Pion(true,6,y,false),false);
-		}*/
+			this.plateau[0][0]=new Case(0,0,new Tour(false,false),false);
+				this.plateau[0][7]=new Case(0,7,new Tour(false,false),false);
+			/*	this.plateau[0][1]=new Case(0,1,new Cavalier(false,false),false);
+				this.plateau[0][6]=new Case(0,6,new Cavalier(false,false),false);
+				this.plateau[0][2]=new Case(0,2,new Fou(false,false),false);
+				//this.plateau[0][5]=new Case(0,5,new Fou(false,false),false);*/
+			//	this.plateau[0][3]=new Case(0,3,new Reine(false,false),false);
+				this.plateau[0][4]=new Case(0,4,new Roi(false,false),false);
+				
+				this.plateau[7][0]=new Case(7,0,new Tour(true,false),false);
+			this.plateau[7][7]=new Case(7,7,new Tour(true,false),false);
+			/*	this.plateau[7][1]=new Case(7,1,new Cavalier(true,false),false);
+				this.plateau[7][6]=new Case(7,6,new Cavalier(true,false),false);
+				this.plateau[7][2]=new Case(7,2,new Fou(true,false),false);
+				this.plateau[7][5]=new Case(7,5,new Fou(true,false),false);*/
+				this.plateau[7][3]=new Case(7,3,new Reine(true,false),false);
+				this.plateau[7][4]=new Case(7,4,new Roi(true,false),false);
+				
+				
+				
+				
+				for (int x = 0; x<8;x++)
+				{
+					this.plateau[1][x]=new Case(1,x,new Pion(false,false),false);
+				}
+				
+				for (int y = 0; y<8;y++)
+				{
+					this.plateau[6][y]=new Case(6,y,new Pion(true,false),false);
+				}
 
 		
 		
-		
+		}
 	}
 	
 	public Case getCase(int i, int j){
@@ -143,11 +149,7 @@ public class Echequier {
 						|| (this.plateau[x2][y2].isEstVide()==false && this.estMangeableCouleur(x1, y1, x2, y2)==true && this.plateau[x1][y1].getPiece().deplacementValide(x1,y1, x2, y2) &&  this.cheminPossible(x1, y1, x2, y2)&& this.verifCheminEchec(x1, y1, x2, y2))){
 							this.plateau[x2][y2]=new Case(x2,y2,this.plateau[x1][y1].getPiece(),false);
 							this.plateau[x1][y1].libererCase();
-						if(this.plateau[x2][y2].getPiece() instanceof Roi)
 							this.plateau[x2][y2].getPiece().setDejaDeplacer(true);
-							
-							
-						
 			}
 		}
 	}
@@ -638,7 +640,136 @@ public class Echequier {
 		
 		return patN;
 	}
+	
+	public void save(String NomFichier)
+	{
+		try
+		{
+		FileWriter fch = new FileWriter( NomFichier );
+		BufferedWriter bch = new BufferedWriter( fch );
+
+		int dejaDeplacer;
+		
+		for(int i=0;i<8;i++){
+			for(int j=0;j<8;j++){
+				if(!(this.plateau[i][j].isEstVide()))
+				{	
+					if(this.plateau[i][j].getPiece().isDejaDeplacer())
+						dejaDeplacer=1;
+					else
+						dejaDeplacer=0;
+					fch.write(this.plateau[i][j].getPiece()+"\t"+i+"\t"+j+"\t"+dejaDeplacer+"\t");
+				}
+				else
+					fch.write("xx\tx\tx\tx\t");
+			}
+		}
+		bch.close();
+		fch.close();
+		
 
 
+
+
+		}catch( IOException e)
+		{
+			System.err.println(e);
+		}
+	}
+	
+	public void Load( String NomFichier)
+	{
+		try
+		{
+			Echequier e=new Echequier(false);
+			FileReader fch = new FileReader( NomFichier );
+			BufferedReader bch = new BufferedReader( fch );
+			String line = bch.readLine();
+			while( line != null)
+			{
+				StringTokenizer st = new StringTokenizer( line, "\t");
+				line = bch.readLine();
+				
+				char nom;
+				Piece p;
+				String s;
+				int x;
+				int y;
+				boolean d;
+				boolean estblanc;
+				
+				for(int i=0;i<8;i++){
+					for(int j=0;j<8;j++){
+
+						s=st.nextToken();
+						if(s.equals("xx")){
+							e.plateau[i][j]=new Case(i,j,true);
+							for(int q=0;q<3;q++){
+								st.nextToken();
+							}
+						}
+						else{
+							char t = s.charAt(1);
+							if(t=='N')
+								estblanc=false;
+							else
+								estblanc=true;
+							
+							nom=s.charAt(0);
+							
+							s=st.nextToken();
+							x=s.charAt(0)-48;
+							
+							s=st.nextToken();
+							y=s.charAt(0)-48;
+							
+							s=st.nextToken();
+							if(s.charAt(0)=='0')
+								d=false;
+							else 
+								d=true;
+							
+							if(nom=='P'){
+								e.plateau[i][j]=new Case(i, j, new Pion(estblanc,d),false);
+							}
+							else if(nom=='T'){
+								e.plateau[i][j]=new Case(i, j, new Tour(estblanc,d),false);
+							}
+							else if(nom=='C'){
+								e.plateau[i][j]=new Case(i, j, new Cavalier(estblanc,d),false);
+							}
+							else if(nom=='F'){
+								e.plateau[i][j]=new Case(i, j, new Fou(estblanc,d),false);
+							}
+							else if(nom=='r'){
+								e.plateau[i][j]=new Case(i, j, new Reine(estblanc,d),false);
+							}
+							else if(nom=='R'){
+								e.plateau[i][j]=new Case(i, j, new Roi(estblanc,d),false);
+							}
+							
+						}
+						
+					
+					}
+				}
+				this.plateau=e.plateau;
+			}
+			bch.close();
+			fch.close();
+		} 
+		catch( IOException e)
+		{
+			System.err.println(e);
+		}
+	} 
+
+
+	public static void main(String[] args){
+		Echequier e1 = new Echequier(false);
+		e1.Load("toto.txt");
+		System.out.println(e1);
+	}
+	
 
 }

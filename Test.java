@@ -6,23 +6,36 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Echequier e1 = new Echequier();
+		Scanner sc =new Scanner(System.in);
+		Echequier e1=new Echequier(false);
+		System.out.println("voulez vous charger la derniere partie ? (tapez 1 pour oui, tapez 2 pour non)");
+		int m= sc.nextInt();
+		if(m==1){
+
+			e1.Load("toto.txt");
+		}else{
 		
+		e1 = new Echequier(true);
+		}
 		
 		Joueur j1=new Joueur(true,"ivan");
 		Joueur j2=new Joueur(false,"alex");
 		
 		System.out.println(e1.toString());
-		Scanner sc =new Scanner(System.in);
+	
 		
 		int x1;
 		int y1;
 		int x2;
 		int y2;		
 		while(e1.mat(j1,j2)==false && e1.pat(j1,j2)==false){
-			System.out.println("coordonnée depart");
+			System.out.println("coordonnée depart ou tapez 10 pour sauvegarder");
 			x1= sc.nextInt();
+			if(x1==10){
+				e1.save("toto.txt");
+				System.out.println("coordonnée depart");
+				x1= sc.nextInt();
+			}
 			y1=sc.nextInt();
 			System.out.println("coordonnée arrivé");
 			x2=sc.nextInt();

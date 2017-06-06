@@ -1,12 +1,8 @@
 
 public class Pion extends Piece{
-	private int xDep;
-	private int yDep;
 	
-	public Pion (boolean c,int xD,int yD,boolean d){
+	public Pion (boolean c,boolean d){
 		super("P",c,d);
-		this.xDep=xD;
-		this.yDep=yD;
 	}
 	
 	public String toString(){
@@ -14,9 +10,9 @@ public class Pion extends Piece{
 	}
 
 	public boolean deplacementValide(int x1,int y1, int x2, int y2) {
-		if((this.xDep==x1 && this.yDep==y1) && ((Math.abs(x1-x2)==2) && y1==y2 ||(Math.abs(x1-x2)==1))&& this.getestBlanc()==false &&(x1<x2))
+		if(this.isDejaDeplacer()==false && ((Math.abs(x1-x2)==2) && y1==y2 ||(Math.abs(x1-x2)==1))&& this.getestBlanc()==false &&(x1<x2))
 			return true;
-		else if((this.xDep==x1 && this.yDep==y1) &&( (Math.abs(x1-x2)==2) && y1==y2 ||(Math.abs(x1-x2)==1))&& this.getestBlanc()==true &&(x1>x2))
+		else if(this.isDejaDeplacer()==false &&( (Math.abs(x1-x2)==2) && y1==y2 ||(Math.abs(x1-x2)==1))&& this.getestBlanc()==true &&(x1>x2))
 			return true;
 		
 		else if((Math.abs(x1-x2)==1) && (this.getestBlanc()==false &&(x1<x2))) // deja bouger noir
