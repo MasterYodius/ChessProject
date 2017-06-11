@@ -23,26 +23,26 @@ public class Echequier {
 	
 			this.plateau[0][0]=new Case(0,0,new Tour(false,false),false);
 				this.plateau[0][7]=new Case(0,7,new Tour(false,false),false);
-			/*	this.plateau[0][1]=new Case(0,1,new Cavalier(false,false),false);
+				this.plateau[0][1]=new Case(0,1,new Cavalier(false,false),false);
 				this.plateau[0][6]=new Case(0,6,new Cavalier(false,false),false);
 				this.plateau[0][2]=new Case(0,2,new Fou(false,false),false);
-				//this.plateau[0][5]=new Case(0,5,new Fou(false,false),false);*/
+				this.plateau[0][5]=new Case(0,5,new Fou(false,false),false);
 				this.plateau[0][3]=new Case(0,3,new Reine(false,false),false);
 				this.plateau[0][4]=new Case(0,4,new Roi(false,false),false);
 				
-			//	this.plateau[7][0]=new Case(7,0,new Tour(true,false),false);
-			//this.plateau[7][7]=new Case(7,7,new Tour(true,false),false);
-			/*	this.plateau[7][1]=new Case(7,1,new Cavalier(true,false),false);
+				this.plateau[7][0]=new Case(7,0,new Tour(true,false),false);
+				this.plateau[7][7]=new Case(7,7,new Tour(true,false),false);
+				this.plateau[7][1]=new Case(7,1,new Cavalier(true,false),false);
 				this.plateau[7][6]=new Case(7,6,new Cavalier(true,false),false);
 				this.plateau[7][2]=new Case(7,2,new Fou(true,false),false);
-				this.plateau[7][5]=new Case(7,5,new Fou(true,false),false);*/
-				//this.plateau[7][3]=new Case(7,3,new Reine(true,false),false);
+				this.plateau[7][5]=new Case(7,5,new Fou(true,false),false);
+				this.plateau[7][3]=new Case(7,3,new Reine(true,false),false);
 				this.plateau[7][4]=new Case(7,4,new Roi(true,false),false);
 				
 				
 				
 				
-			/*	for (int x = 0; x<8;x++)
+				for (int x = 0; x<8;x++)
 				{
 					this.plateau[1][x]=new Case(1,x,new Pion(false,false),false);
 				}
@@ -50,7 +50,7 @@ public class Echequier {
 				for (int y = 0; y<8;y++)
 				{
 					this.plateau[6][y]=new Case(6,y,new Pion(true,false),false);
-				}*/
+				}
 
 		
 		
@@ -122,7 +122,7 @@ public class Echequier {
 					int nb = y2-y1;
 					int i=1;
 						boolean bloquer = false;
-						while(i<nb && !bloquer){ //tant que il est pas bloqué  
+						while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 							if(!(this.plateau[x1][y1+i].isEstVide())){
 								bloquer=true;
 							}
@@ -141,7 +141,7 @@ public class Echequier {
 					int nb = y1-y2;
 					int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 						if(!(this.plateau[x1][y1-i].isEstVide())){
 							bloquer=true;
 						}
@@ -214,7 +214,7 @@ public class Echequier {
 				int nb = y2-y1;
 				int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 						if(!(this.plateau[x1][y1+i].isEstVide())){
 							bloquer=true;
 						}
@@ -227,7 +227,7 @@ public class Echequier {
 				int nb = y1-y2;
 				int i=1;
 				boolean bloquer = false;
-				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+				while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 					if(!(this.plateau[x1][y1-i].isEstVide())){
 						bloquer=true;
 					}
@@ -240,7 +240,7 @@ public class Echequier {
 				int nb = x2-x1;
 				int i=1;
 				boolean bloquer = false;
-				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+				while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 					if(!(this.plateau[x1+i][y1].isEstVide())){
 						bloquer=true;
 					}
@@ -252,7 +252,7 @@ public class Echequier {
 				int nb = x1-x2;
 				int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 						if(!(this.plateau[x1-i][y1].isEstVide())){
 							bloquer=true;
 						}
@@ -269,7 +269,7 @@ public class Echequier {
 				int nb = y2-y1;
 				int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 						if(!(this.plateau[x1-i][y1-i].isEstVide())){
 							bloquer=true;
 						}
@@ -281,7 +281,7 @@ public class Echequier {
 				int nb = y2-y1;
 				int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 						if(!(this.plateau[x1-i][y1+i].isEstVide())){
 							bloquer=true;
 						}
@@ -293,7 +293,7 @@ public class Echequier {
 				int nb = y2-y1;
 				int i=1;
 				boolean bloquer = false;
-				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+				while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 					if(!(this.plateau[x1+i][y1+i].isEstVide())){
 						bloquer=true;
 					}
@@ -305,7 +305,7 @@ public class Echequier {
 				int nb = y1-y2;
 				int i=1;
 				boolean bloquer = false;
-				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+				while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 					if(!(this.plateau[x1+i][y1-i].isEstVide())){
 						bloquer=true;
 					}
@@ -324,7 +324,7 @@ public class Echequier {
 				int nb = y2-y1;
 				int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 						if(!(this.plateau[x1][y1+i].isEstVide())){
 							bloquer=true;
 						}
@@ -337,7 +337,7 @@ public class Echequier {
 				int nb = y1-y2;
 				int i=1;
 				boolean bloquer = false;
-				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+				while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 					if(!(this.plateau[x1][y1-i].isEstVide())){
 						bloquer=true;
 					}
@@ -350,7 +350,7 @@ public class Echequier {
 				int nb = x2-x1;
 				int i=1;
 				boolean bloquer = false;
-				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+				while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 					if(!(this.plateau[x1+i][y1].isEstVide())){
 						bloquer=true;
 					}
@@ -362,7 +362,7 @@ public class Echequier {
 				int nb = x1-x2;
 				int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 						if(!(this.plateau[x1-i][y1].isEstVide())){
 							bloquer=true;
 						}
@@ -375,7 +375,7 @@ public class Echequier {
 				int nb = y1-y2;
 				int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 						if(!(this.plateau[x1-i][y1-i].isEstVide())){
 							bloquer=true;
 						}
@@ -387,7 +387,7 @@ public class Echequier {
 				int nb = y2-y1;
 				int i=1;
 					boolean bloquer = false;
-					while(i<nb && !bloquer){ //tant que il est pas bloqué  
+					while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 						if(!(this.plateau[x1-i][y1+i].isEstVide())){
 							bloquer=true;
 						}
@@ -399,7 +399,7 @@ public class Echequier {
 				int nb = y2-y1;
 				int i=1;
 				boolean bloquer = false;
-				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+				while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 					if(!(this.plateau[x1+i][y1+i].isEstVide())){
 						bloquer=true;
 					}
@@ -411,7 +411,7 @@ public class Echequier {
 				int nb = y1-y2;
 				int i=1;
 				boolean bloquer = false;
-				while(i<nb && !bloquer){ //tant que il est pas bloqué  
+				while(i<nb && !bloquer){ //tant que il est pas bloquÃ©  
 					if(!(this.plateau[x1+i][y1-i].isEstVide())){
 						bloquer=true;
 					}
@@ -425,51 +425,7 @@ public class Echequier {
 		return false;
 
 	}
-	
-	
-	/*public boolean verifEchec(int x1,int y1,int x2,int y2){
-		Piece pieceDepart = this.plateau[x1][y1].getPiece();
-		boolean couleurPiece = pieceDepart.getestBlanc();
-		int xRoiE=0; 
-		int yRoiE=0;
-		int xRoiA=0;
-		int yRoiA=0;
-		
-		for(int i=0;i<8;i++){   
-			for(int j=0; j<8;j++){
-				if(this.plateau[i][j].isEstVide()==false){
-					
-				
-					if(this.plateau[i][j].getPiece().getestBlanc()!=couleurPiece && this.plateau[i][j].getPiece() instanceof Roi){
-						xRoiE=i; 
-						yRoiE=j;
-					}
-					else if(this.plateau[i][j].getPiece().getestBlanc()==couleurPiece && this.plateau[i][j].getPiece() instanceof Roi){
-						xRoiA=i; 
-						yRoiA=j;
-					}
-				}
-			}
-		}
-		if(this.cheminPossible(x2, y2, xRoiE, yRoiE))
-			return true;
-		
-		if(x1==xRoiA && y1<yRoiA){	// la piece protege a droite
-			int nb = 7-y1;
-			int i=1;
-				while(i<nb){ //tant que il est pas bloqué  
-					if(!(this.plateau[x1][y1+i].isEstVide()) && this.plateau[x1][y1+i].getPiece().getestBlanc()==couleurPiece ){
-						return false;
-					}
-					else if(!(this.plateau[x1][y1+i].isEstVide()) && this.plateau[x1][y1+i].getPiece().getestBlanc()!=couleurPiece && this.plateau[x1][y1+i].getPiece().deplacementValide(x1, y1+i, xRoiA, yRoiA) && this.cheminPossible(x1, y1+i, xRoiA, yRoiA)){
-						return true;
-					}
-					i++;
-				}
-		}
-		
-		return false;
-	}*/
+
 	public boolean verifEchecs(Joueur j1){
 		boolean couleurPiece=j1.isCouleurBlanc();
 		
@@ -629,38 +585,7 @@ public class Echequier {
 		}
 		boolean patB=true;
 		boolean patN=true;
-		/*
 		
-		for(int x1=0;x1<8;x1++){
-			for(int y1=0;y1<8;y1++){
-				if(this.plateau[x1][y1].isEstVide()==false && this.plateau[x1][y1].getPiece().getestBlanc()==true){
-					for(int x2=0;x2<8;x2++){
-						for(int y2=0;y2<8;y2++){
-							if(this.verifCheminEchec(x1, y1, x2, y2)&& this.cheminPossible(x1, y1, x2, y2) && this.plateau[x1][y1].getPiece().deplacementValide(x1, y1, x2, y2) &&(this.plateau[x2][y2].isEstVide() ||(this.plateau[x2][y2].isEstVide()==false && this.estMangeableCouleur(x1, y1, x2, y2)==true ))){
-								//System.out.println(x1+" "+y1+" "+x2+" "+y2);
-								patB= false;
-							}
-						}
-					}
-					if(patB==true)
-						return true;
-				}
-				
-				
-				else if( this.plateau[x1][y1].isEstVide()==false && this.plateau[x1][y1].getPiece().getestBlanc()==false){
-					for(int x2=0;x2<8;x2++){
-						for(int y2=0;y2<8;y2++){
-							if(this.verifCheminEchec(x1, y1, x2, y2)&& this.cheminPossible(x1, y1, x2, y2) && this.plateau[x1][y1].getPiece().deplacementValide(x1, y1, x2, y2) &&(this.plateau[x2][y2].isEstVide() ||(this.plateau[x2][y2].isEstVide()==false && this.estMangeableCouleur(x1, y1, x2, y2)==true ))){
-								//System.out.println(x1+" "+y1+" "+x2+" "+y2);
-								patN = false;
-							}
-						}
-					}
-				}
-			}
-		}
-		
-		return patN;*/
 		
 		
 		for(int x1=0;x1<8;x1++){
@@ -816,20 +741,101 @@ public class Echequier {
 		}
 	} 
 
-
-	/*public static void main(String[] args){
-		/*Echequier e1 = new Echequier(false);
-		e1.Load("toto.txt");
-		//System.out.println("♟fref");
+	public void jouer(){
+		Scanner sc =new Scanner(System.in);
 		
-		String c = new String();
-		Scanner sc=new Scanner(System.in);
+		System.out.println("voulez vous charger la derniere partie ? (tapez 1 pour oui, tapez 2 pour non)");
+		int m= sc.nextInt();
+		if(m==1){
+			this.Load("sauvegarde.txt");
+		}
+	
+		
+		Joueur j1=new Joueur(true,"ivan");
+		Joueur j2=new Joueur(false,"alex");
+		
+		System.out.println(this.toString());
+	
+		String c;
+		int x1;
+		int y1;
+		int x2;
+		int y2;	
+		boolean tour = true;
+		while(this.mat(j1,j2)==false && this.pat(j1,j2)==false){
+			boolean choix = false;
 		do{
-			System.out.println("saisir :");
-			c=sc.nextLine();
-		}while(c.charAt(0)-49<0 || c.charAt(0)-49>=8 || c.charAt(1)-65<0 || c.charAt(1)-65 >=8);
-		System.out.println("bingo");
-	}*/
+			do{
+				do{
+					System.out.println("coordonnée depart ou tapez 'sauver' pour sauvegarder");
+					c=sc.nextLine();
+				}while(c.length()!=2 && !c.equals("sauver"));
+				if(c.equals("sauver")){
+					this.save("sauvegarde.txt");
+					System.out.println("a ete sauver");
+				}
+				if(this.plateau[Math.abs(7-(c.charAt(1)-49))][c.charAt(0)-65].isEstVide())
+					System.out.println("Pas de pièce à ces coordonnées");
+				else
+					choix=true;
+			}while(((c.charAt(1)-49<0 || c.charAt(1)-49>7 || c.charAt(0)-65<0 || c.charAt(0)-65 >7) && !choix) ||this.plateau[Math.abs(7-(c.charAt(1)-49))][c.charAt(0)-65].isEstVide());
+			
+			y1=c.charAt(0)-65;
+			x1=Math.abs(7-(c.charAt(1)-49));
+			
+			 if( !(this.plateau[x1][y1].getPiece().getestBlanc()==tour))
+				System.out.println("Ce n'est pas votre tour");
+			
+		}while(!(this.plateau[x1][y1].getPiece().getestBlanc()==tour) ||this.plateau[x1][y1].isEstVide());
+			
+		
+			System.out.println("coordonnée arrivée");
+			
+			do{
+				do{
+					c=sc.nextLine();
+				}while(c.length()!=2);
+			}while(c.charAt(1)-49<0 || c.charAt(1)-49>7 || c.charAt(0)-65<0 || c.charAt(0)-65 >7);
+			
+			y2=c.charAt(0)-65;
+			x2=Math.abs(7-(c.charAt(1)-49));
+
+			try{
+				this.deplacement(x1,y1,x2,y2);
+			}catch(Exception e){
+				System.out.println("il n'y a pas de piece à  ces coordonnées");
+			};
+		
+	
+			System.out.println(this.toString());
+			System.out.println("joueur blanc echec:"+this.verifEchecs(j1));
+			System.out.println("joueur noir echec:"+this.verifEchecs(j2));
+			System.out.println(tour);
+			
+			
+			if(tour == true)
+			{
+				tour = false;
+				System.out.println("Au tour des Noirs");
+			}
+			
+			else{
+				tour = true;
+				System.out.println("Au tour des Blanc");
+			}
+		
+		}
+		if( this.mat(j1, j2) && this.verifEchecs(j1))
+			System.out.println("ECHEC ET MAT : les noirs ont gagné");
+		
+		else if(this.mat(j1, j2) && this.verifEchecs(j2))
+			System.out.println("ECHEC ET MAT : les blancs ont gagné");
+		else if(this.pat(j1, j2))
+			System.out.println("pat : match nul");
+		
+		sc.close();
+	}
+	
 	
 
 }

@@ -6,7 +6,7 @@ public class Roi extends Piece{
 		super("R",c,d);
 	}
 
-
+	
 	public String toString(){
 		return super.toString();
 	}

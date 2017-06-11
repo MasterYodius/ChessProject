@@ -7,7 +7,6 @@ public class Joueur {
 		this.couleurBlanc=c;
 		this.nomJoueur=nom;
 	}
-	
 	public boolean isCouleurBlanc() {
 		return couleurBlanc;
 	}
@@ -20,4 +19,5 @@ public class Joueur {
 	public void setNomJoueur(String nomJoueur) {
 		this.nomJoueur = nomJoueur;
 	}
+	
 }
